@@ -14,7 +14,14 @@ const Navbar = () => {
         <li><Link to={'/blogs'}>Blogs</Link></li>
         <li>
             {
-                user?.email ? <button onClick={logoutHandler} className="btn btn-warning rounded">Log out</button> : <Link to={'/login'}><button className="btn btn-warning">Login</button></Link>
+                user?.email ?
+                    <>
+                        <li><Link to={'/dashboard'}>Dashboard</Link></li>
+                        <li>
+                            <button onClick={logoutHandler} className="btn btn-warning rounded">Log out</button>
+                        </li>
+                    </>
+                    : <Link to={'/login'}><button className="btn btn-warning">Login</button></Link>
             }
         </li>
     </React.Fragment>
