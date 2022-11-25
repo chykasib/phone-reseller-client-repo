@@ -1,4 +1,5 @@
 import React from 'react';
+import PrimaryButton from '../../../../components/PrimaryButton';
 const Product = ({ product }) => {
     const { picture, name, location, resalePrice, originalPrice, use, postedTime } = product;
     return (
@@ -15,7 +16,7 @@ const Product = ({ product }) => {
                 <p><small className='font-bold'>years of use: </small> {use}</p>
                 <p><small className='font-bold'>posted Time</small> :  {postedTime}</p>
                 <p><small className='font-bold'>location </small>: {location}</p>
-                <button className="btn btn-primary my-5">Book Now</button>
+                <PrimaryButton>Book Now</PrimaryButton>
             </div>
         </div>
     );
