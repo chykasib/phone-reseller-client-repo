@@ -1,11 +1,11 @@
 import React from 'react';
 
-const UseAdmin = () => {
+const Payment = () => {
     return (
         <div>
-
+            <p>payment</p>
         </div>
     );
 };
 
-export default UseAdmin;
+export default Payment;

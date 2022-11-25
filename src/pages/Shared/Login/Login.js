@@ -10,7 +10,7 @@ const Login = () => {
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail)
     const { register, reset, formState: { errors }, handleSubmit } = useForm();
-    const { loginByEmailPassword, google } = useContext(AuthContext);
+    const { loginByEmailPassword, googleSignIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -19,7 +19,7 @@ const Login = () => {
         navigate(from, { replace: true })
     }
     useTitle('login')
-    const handleLogin = data => {
+    const loginHandle = data => {
         setError('')
         loginByEmailPassword(data.email, data.password)
             .then(result => {
@@ -36,8 +36,8 @@ const Login = () => {
                 setError(error.message)
             })
     };
-    const googleLogIn = () => {
-        google()
+    const googleLoginHandler = () => {
+        googleSignIn()
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -49,7 +49,7 @@ const Login = () => {
             <div className="hero-content flex-col lg:flex-row">
                 <div className="card w-full shadow-2xl bg-base-100 px-5 py-3">
                     <h2 className='text-3xl text-center pb-5'>Login</h2>
-                    <form onSubmit={handleSubmit(handleLogin)}>
+                    <form onSubmit={handleSubmit(loginHandle)}>
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -77,7 +77,7 @@ const Login = () => {
                     </form>
                     <p className='text-center my-4'>New to T Phone Reseller? <Link className='text-primary' to={'/register'}>Create new account</Link></p>
                     <div className="divider">OR</div>
-                    <button onClick={googleLogIn} className="btn btn-outline btn-success my-3">CONTINUE WITH GOOGLE</button>
+                    <button onClick={googleLoginHandler} className="btn btn-outline btn-success my-3">CONTINUE WITH GOOGLE</button>
                 </div>
             </div>
         </div>

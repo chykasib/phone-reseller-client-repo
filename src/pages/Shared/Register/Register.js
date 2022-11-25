@@ -8,7 +8,7 @@ import { useToken } from '../../../Hooks/UseToken';
 
 const Register = () => {
     const { register, reset, formState: { errors }, handleSubmit } = useForm();
-    const { createUser, google, updateName } = useContext(AuthContext);
+    const { createUser, googleSignIn, updateName } = useContext(AuthContext);
     const [registerError, setRegisterError] = useState('')
     const [createUserEmail, setCreateUserEmail] = useState('')
     const [token] = useToken(createUserEmail)
@@ -17,14 +17,13 @@ const Register = () => {
     if (token) {
         navigate('/')
     }
-    const handleLogin = data => {
+    const registerHandler = data => {
         createUser(data.email, data.password, data.role)
             .then(result => {
                 const user = result.user;
                 const name = data.name;
                 const email = data.email;
                 const role = data.role;
-                console.log(name, email, role)
                 saveUser(name, email, role)
                 toast('successfully login')
                 if (user?.uid) {
@@ -45,7 +44,7 @@ const Register = () => {
 
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch(`https://doctors-portal-server-gray.vercel.app/users`, {
+        fetch(`http://localhost:5000/users`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(user)
@@ -56,8 +55,8 @@ const Register = () => {
             })
     }
 
-    const googleLogIn = () => {
-        google()
+    const googleLoginHandler = () => {
+        googleSignIn()
             .then(result => {
                 const user = result.user;
                 toast('successfully login')
@@ -72,7 +71,7 @@ const Register = () => {
         <div className="hero my-40">
             <div className="card w-full max-w-sm shadow-2xl bg-base-100 px-5 py-3">
                 <h2 className='text-3xl text-center pb-5'>Sign Up</h2>
-                <form onSubmit={handleSubmit(handleLogin)}>
+                <form onSubmit={handleSubmit(registerHandler)}>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Name</span>
@@ -113,7 +112,7 @@ const Register = () => {
                 </form>
                 <p className='text-center'>Already have an account? <Link className='text-primary' to={'/login'}>Please! login</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={googleLogIn} className="btn btn-outline btn-success my-3">CONTINUE WITH GOOGLE</button>
+                <button onClick={googleLoginHandler} className="btn btn-outline btn-success my-3">CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

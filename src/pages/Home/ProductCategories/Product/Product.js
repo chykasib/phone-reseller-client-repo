@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PrimaryButton from '../../../../components/PrimaryButton';
 import { AuthContext } from '../../../../Context/AuthProvider';
 const Product = ({ product, setProduct }) => {
     const { user } = useContext(AuthContext)
@@ -27,8 +26,8 @@ const Product = ({ product, setProduct }) => {
                     </div>
                 }
                 <div className="card-actions justify-center">
-                    <label onClick={() => setProduct(product)} htmlFor="Product-modal">
-                        <PrimaryButton>Book Now</PrimaryButton>
+                    <label onClick={() => setProduct(product)} htmlFor="product-modal" className="btn btn-success">
+                        Book Now
                     </label>
                 </div>
             </div>
