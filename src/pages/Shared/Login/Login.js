@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { useToken } from '../../Hooks/useToken';
-import { useTitle } from '../../Hooks/UseTitle';
+import { AuthContext } from '../../../Context/AuthProvider';
+import { useTitle } from '../../../Hooks/UseTitle';
+import { useToken } from '../../../Hooks/UseToken';
 const Login = () => {
     const [error, setError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
@@ -70,12 +70,12 @@ const Login = () => {
                         {
                             errors.password && <p className='text-red-600'>{errors.password?.message}</p>
                         }
-                        <button type='submit' className="btn btn-accent mt-4 w-full">Login</button>
+                        <button type='submit' className="btn btn-warning mt-4 w-full">Login</button>
                         {
                             error && <p className='text-center text-red-600 py-3'>{error}</p>
                         }
                     </form>
-                    <p className='text-center'>New to Doctors Portal? <Link className='text-primary' to={'/register'}>Create new account</Link></p>
+                    <p className='text-center my-4'>New to T Phone Reseller? <Link className='text-primary' to={'/register'}>Create new account</Link></p>
                     <div className="divider">OR</div>
                     <button onClick={googleLogIn} className="btn btn-outline btn-success my-3">CONTINUE WITH GOOGLE</button>
                 </div>
