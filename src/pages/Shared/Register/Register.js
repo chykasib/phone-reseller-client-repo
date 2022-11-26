@@ -70,7 +70,7 @@ const Register = () => {
     return (
         <div className="hero my-40">
             <div className="card w-full max-w-sm shadow-2xl bg-base-100 px-5 py-3">
-                <h2 className='text-3xl text-center pb-5'>Sign Up</h2>
+                <h2 className='text-3xl font-bold text-center py-5'>Sign Up</h2>
                 <form onSubmit={handleSubmit(registerHandler)}>
                     <div className="form-control w-full">
                         <label className="label">
@@ -105,6 +105,9 @@ const Register = () => {
                     {
                         registerError && <p className='text-center text-red-500'>{registerError}</p>
                     }
+                    <label className="label">
+                        <span className="label-text">Choose an option</span>
+                    </label>
                     <select {...register("role")} className="select select-bordered my-5">
                         <option value="seller">Seller</option>
                         <option value="user" disabled selected>User</option>

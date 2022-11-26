@@ -1,13 +1,13 @@
 import React from 'react';
 import { useTitle } from '../../../Hooks/UseTitle';
 
-const AllSellers = () => {
+const AllUsers = () => {
     useTitle('all users')
     return (
         <div>
-            <p>AllSellers</p>
+
         </div>
     );
 };
 
-export default AllSellers;
+export default AllUsers;

@@ -3,8 +3,11 @@ import DashboardLayout from "../../layout/DashboardLayout";
 import Main from "../../layout/Main";
 import Blogs from "../../pages/Blogs/Blogs";
 import AddProduct from "../../pages/Dashboard/AddProduct/AddProduct";
+import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
+import AllUsers from "../../pages/Dashboard/AllUsers/AllUsers";
 import MyOrder from "../../pages/Dashboard/MyOrder/MyOrder";
+import MyProduct from "../../pages/Dashboard/MyProduct/MyProduct";
 import Payment from "../../pages/Dashboard/Payment/Payment";
 import Home from "../../pages/Home/Home/Home";
 import Products from "../../pages/Home/ProductCategories/Products/Products";
@@ -28,7 +31,7 @@ export const router = createBrowserRouter([
                 path: 'login', element: <Login></Login>
             },
             {
-                path: '/category/:id', element: <Products></Products>,
+                path: '/category/:id', element: <PrivateRoute><Products></Products></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
             }
             ,
@@ -42,11 +45,18 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path: '/dashboard/allbuyers', element: <AllSellers></AllSellers>
+                path: '/dashboard/allusers', element: <AllUsers></AllUsers>
+            },
+            {
+                path: '/dashboard/allbuyers', element: <AllBuyers></AllBuyers>
             },
             {
                 path: '/dashboard/allsellers', element: <AllSellers></AllSellers>
             },
+            {
+                path: '/dashboard/myProduct', element: <MyProduct></MyProduct>
+            }
+            ,
             {
                 path: '/dashboard/addProduct', element: <AddProduct></AddProduct>
             },

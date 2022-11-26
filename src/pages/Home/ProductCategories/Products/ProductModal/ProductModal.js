@@ -6,19 +6,22 @@ import Loading from '../../../../Shared/Loading/Loading';
 
 const ProductModal = ({ product, setProduct }) => {
     const { user, loading } = useContext(AuthContext)
-    const { name, resalePrice } = product;
+    const { name, resalePrice, picture } = product;
     const submitHandler = e => {
         e.preventDefault();
         const form = e.target;
         const location = form.location.value
         const phone = form.phone.value;
         const email = form.email.value;
+        const userName = form.userName.value;
         const orders = {
             product: name,
             phone,
+            userName,
             email,
             location,
-            resalePrice
+            resalePrice,
+            picture
         }
         fetch('http://localhost:5000/orders', {
             method: 'POST',
@@ -29,7 +32,7 @@ const ProductModal = ({ product, setProduct }) => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success('your order successfully added');
+                    toast.success('the item is booked');
                     form.reset('')
                     setProduct(null)
 
@@ -52,9 +55,11 @@ const ProductModal = ({ product, setProduct }) => {
                     <form onSubmit={submitHandler} className='grid grid-cols-1 gap-3 mt-6'>
                         <input type="text" defaultValue={name} className="input input-bordered " readOnly />
                         <input type="text" name='email' defaultValue={user?.email} placeholder="Email" className="input input-bordered" readOnly />
+                        <input type="text" name='userName' defaultValue={user?.displayName} placeholder="Email" className="input input-bordered" readOnly />
                         <input type="text" defaultValue={resalePrice} className="input input-bordered " readOnly />
                         <input type="phone" name='phone' placeholder="Phone Number" className="input input-bordered " />
                         <input type="text" name='location' placeholder="location" className="input input-bordered " />
+                        <input type="photoUrl" defaultValue={picture} className="input input-bordered " readOnly />
                         <br />
                         <PrimaryButton>Submit</PrimaryButton>
                     </form>

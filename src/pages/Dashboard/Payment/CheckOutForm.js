@@ -44,7 +44,7 @@ const CheckOutForm = ({ order }) => {
             type: 'card',
             card,
         })
-
+        console.log(paymentMethod)
         if (error) {
             setCardError(error.message)
             toast.success('Please try again!')
@@ -123,7 +123,7 @@ const CheckOutForm = ({ order }) => {
                     },
                 }}
             />
-            <button className='btn btn-sm mt-7 btn-primary'
+            <button className='btn btn-sm mt-7 btn-warning'
                 type="submit"
                 disabled={!stripe || !clientSecret || processing}>
                 Pay
@@ -134,7 +134,7 @@ const CheckOutForm = ({ order }) => {
             }
             {
                 cardSuccess &&
-                <div className="">
+                <div>
                     <p className='text-green-500'>{cardSuccess}</p>
                     <p>Your TransactionId : <span className='font-bold'>{transactionId}</span></p>
                 </div>

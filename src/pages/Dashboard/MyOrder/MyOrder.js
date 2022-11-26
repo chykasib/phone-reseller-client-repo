@@ -28,7 +28,9 @@ const MyOrder = () => {
                     <thead>
                         <tr>
                             <th></th>
+                            <th></th>
                             <th>NAME</th>
+                            <th>Details</th>
                             <th>Price</th>
                             <th>Payment</th>
                         </tr>
@@ -37,9 +39,33 @@ const MyOrder = () => {
                         {
                             orders?.map((order, i) =>
 
-                                <tr className="hover" key={i}>
+                                <tr key={i}>
                                     <th>{i + 1}</th>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="w-24 rounded-full">
+                                                <img src={order.picture} alt='' />
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{order.product}</td>
+                                    <td>
+                                        <label htmlFor="my-order" className="btn">Details</label>
+                                        <input type="checkbox" id="my-order" className="modal-toggle" />
+                                        <div className="modal modal-bottom sm:modal-middle">
+                                            <div className="modal-box">
+                                                <form className='grid grid-cols-1 gap-3 mt-6'>
+                                                    <input type="text" defaultValue={order.phone} className="input input-bordered " readOnly />
+                                                    <input type="text" name='userName' defaultValue={order?.userName} className="input input-bordered" readOnly />
+                                                    <input type="text" name='email' defaultValue={order.email} className="input input-bordered" readOnly />
+                                                    <input type="text" name='location' defaultValue={order.location} className="input input-bordered" readOnly />
+                                                    <div className="modal-action">
+                                                        <label htmlFor="my-order" className="btn">close</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>
                                         {
                                             order.resalePrice &&

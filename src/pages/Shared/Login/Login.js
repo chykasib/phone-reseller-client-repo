@@ -14,7 +14,6 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
-
     if (token) {
         navigate(from, { replace: true })
     }
@@ -41,6 +40,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
@@ -48,7 +48,7 @@ const Login = () => {
         <div className="hero my-40">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="card w-full shadow-2xl bg-base-100 px-5 py-3">
-                    <h2 className='text-3xl text-center pb-5'>Login</h2>
+                    <h2 className='text-3xl font-bold text-center pb-5'>Login</h2>
                     <form onSubmit={handleSubmit(loginHandle)}>
                         <div className="form-control w-full">
                             <label className="label">

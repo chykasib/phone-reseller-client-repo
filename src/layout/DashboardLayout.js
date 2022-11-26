@@ -16,12 +16,12 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content">
+                    <ul className="menu p-4 w-60 bg-black">
                         {/* <!-- Sidebar content here --> */}
                         {
                             // isAdmin &&
                             <>
-                                <Link to={'/dashboard'}>
+                                <Link to={'/dashboard/allusers'}>
                                     <button className="btn btn-info">All Users</button>
                                 </Link>
                                 <Link className='my-6' to={'/dashboard/allbuyers'}>
