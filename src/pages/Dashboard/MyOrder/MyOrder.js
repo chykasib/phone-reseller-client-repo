@@ -23,7 +23,6 @@ const MyOrder = () => {
     }
     return (
         <div>
-            <p className='text-3xl mt-5' >My Orders</p>
             <div className="mt-5 mx-10">
                 <table className="table w-full">
                     <thead>
@@ -44,14 +43,14 @@ const MyOrder = () => {
                                     <td>
                                         {
                                             order.resalePrice &&
-                                            <p>${order.resalePrice}</p>
+                                            <p>{order.resalePrice} taka</p>
                                         }
                                     </td>
                                     <td>
                                         {
                                             order.resalePrice && !order.paid &&
                                             <Link to={`/dashboard/payment/${order._id}`}>
-                                                <button className='btn btn-primary btn-sm'>pay</button>
+                                                <button className='btn btn-warning btn-sm'>pay</button>
                                             </Link>
                                         }
                                         {
