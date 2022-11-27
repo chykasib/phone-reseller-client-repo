@@ -42,9 +42,14 @@ const DashboardLayout = () => {
                         {
                             user?.emailVerified
                             === true &&
-                            <Link to={'/dashboard/myorder'}>
-                                <button className="btn btn-info">My Order</button>
-                            </Link>
+                            <>
+                                <Link to={'/dashboard/myorder'}>
+                                    <button className="btn btn-info">My Order</button>
+                                </Link>
+                                <Link className='mt-5' to={'/dashboard/mywishlist'}>
+                                    <button className="btn btn-info">My WishList</button>
+                                </Link>
+                            </>
                         }
                     </ul>
 

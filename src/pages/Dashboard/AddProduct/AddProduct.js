@@ -55,6 +55,7 @@ const AddProduct = () => {
             })
             .catch(err => console.error(err))
     }
+
     if (loading) {
         return <Loading></Loading>
     }
