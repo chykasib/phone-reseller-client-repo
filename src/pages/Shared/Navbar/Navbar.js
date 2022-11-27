@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
+import Loading from '../Loading/Loading';
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, loading } = useContext(AuthContext);
+    const navigate = useNavigate()
     const [theme, setTheme] = useState('bg-white');
     const toggleTheme = () => {
         theme === 'bg-white' ? setTheme('bg-black') : setTheme('bg-white');
@@ -13,7 +15,9 @@ const Navbar = () => {
     }, [theme]);
     const logoutHandler = () => {
         logOut()
-            .then(result => { })
+            .then(result => {
+                navigate('/')
+            })
             .catch(error => console.error(error))
     }
     const menuItems = <React.Fragment>
@@ -32,6 +36,9 @@ const Navbar = () => {
         }
         <input onClick={toggleTheme} type="checkbox" className="toggle mt-4 ml-4" />
     </React.Fragment>
+    if (loading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div className="navbar bg-primary text-primary-content">

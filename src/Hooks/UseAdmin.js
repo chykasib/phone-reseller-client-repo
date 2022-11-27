@@ -1,11 +1,17 @@
-import React from 'react';
+import { useEffect, useState } from "react"
 
-const UseAdmin = () => {
-    return (
-        <div>
-
-        </div>
-    );
-};
-
-export default UseAdmin;
+export const useAdmin = email => {
+    const [isAdmin, setAdmin] = useState(false)
+    const [useAdminLoading, setUseAdminLoading] = useState(true)
+    useEffect(() => {
+        if (email) {
+            fetch(`http://localhost:5000/users/admin/${email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setAdmin(data.isAdmin)
+                    setUseAdminLoading(false)
+                })
+        }
+    }, [email])
+    return [isAdmin, useAdminLoading]
+}

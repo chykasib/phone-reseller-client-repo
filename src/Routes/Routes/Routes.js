@@ -7,13 +7,14 @@ import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
 import AllUsers from "../../pages/Dashboard/AllUsers/AllUsers";
 import MyOrder from "../../pages/Dashboard/MyOrder/MyOrder";
-import MyProduct from "../../pages/Dashboard/MyProduct/MyProduct";
+import MyProducts from "../../pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../pages/Dashboard/Payment/Payment";
 import Home from "../../pages/Home/Home/Home";
 import Products from "../../pages/Home/ProductCategories/Products/Products";
 import ErrorPage from "../../pages/Shared/ErrorPage/ErrorPage";
 import Login from "../../pages/Shared/Login/Login";
 import Register from "../../pages/Shared/Register/Register";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from '../PrivateRoute/PrivateRoute'
 export const router = createBrowserRouter([
     {
@@ -45,16 +46,16 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path: '/dashboard/allusers', element: <AllUsers></AllUsers>
+                path: '/dashboard/allusers', element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
-                path: '/dashboard/allbuyers', element: <AllBuyers></AllBuyers>
+                path: '/dashboard/allbuyers', element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
-                path: '/dashboard/allsellers', element: <AllSellers></AllSellers>
+                path: '/dashboard/allsellers', element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
-                path: '/dashboard/myProduct', element: <MyProduct></MyProduct>
+                path: '/dashboard/myProduct', element: <MyProducts></MyProducts>
             }
             ,
             {

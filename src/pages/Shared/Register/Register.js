@@ -18,13 +18,13 @@ const Register = () => {
         navigate('/')
     }
     const registerHandler = data => {
-        createUser(data.email, data.password, data.role)
+        createUser(data.email, data.password, data.typeOfRole)
             .then(result => {
                 const user = result.user;
                 const name = data.name;
                 const email = data.email;
-                const role = data.role;
-                saveUser(name, email, role)
+                const typeOfRole = data.typeOfRole;
+                saveUser(name, email, typeOfRole)
                 toast('successfully login')
                 if (user?.uid) {
                     navigate('/')
@@ -42,8 +42,8 @@ const Register = () => {
             .catch(error => console.error(error))
     };
 
-    const saveUser = (name, email, role) => {
-        const user = { name, email, role };
+    const saveUser = (name, email, typeOfRole) => {
+        const user = { name, email, typeOfRole };
         fetch(`http://localhost:5000/users`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
@@ -108,9 +108,9 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Choose an option</span>
                     </label>
-                    <select {...register("role")} className="select select-bordered my-5">
+                    <select {...register("typeOfRole")} className="select select-bordered my-5">
+                        <option value="user">User</option>
                         <option value="seller">Seller</option>
-                        <option value="user" disabled selected>User</option>
                     </select>
                 </form>
                 <p className='text-center'>Already have an account? <Link className='text-primary' to={'/login'}>Please! login</Link></p>

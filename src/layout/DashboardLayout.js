@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
-// import UseAdmin from '../Hooks/UseAdmin';
+import { useAdmin } from '../Hooks/UseAdmin';
+import { useSeller } from '../Hooks/UseSeller';
 import Navbar from '../pages/Shared/Navbar/Navbar'
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    // const [isAdmin] = UseAdmin(user?.email)
+    const [isAdmin] = useAdmin(user?.email)
+    const [isSeller] = useSeller(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -17,9 +19,8 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-60 bg-black">
-                        {/* <!-- Sidebar content here --> */}
                         {
-                            // isAdmin &&
+                            isAdmin &&
                             <>
                                 <Link to={'/dashboard/allusers'}>
                                     <button className="btn btn-info">All Users</button>
@@ -27,16 +28,23 @@ const DashboardLayout = () => {
                                 <Link className='my-6' to={'/dashboard/allbuyers'}>
                                     <button className="btn btn-info">All Buyers</button>
                                 </Link>
-                                <Link to={'/dashboard/addProduct'}>
-                                    <button className="btn btn-info">Add Product</button>
-                                </Link>
                                 <Link className='my-6' to={'/dashboard/allsellers'}>
                                     <button className="btn btn-info">All Sellers</button>
                                 </Link>
-                                <Link to={'/dashboard/myorder'}>
-                                    <button className="btn btn-info">My Order</button>
-                                </Link>
                             </>
+                        }
+                        {
+                            isSeller &&
+                            <Link to={'/dashboard/addProduct'}>
+                                <button className="btn btn-info">Add Product</button>
+                            </Link>
+                        }
+                        {
+                            user?.emailVerified
+                            === true &&
+                            <Link to={'/dashboard/myorder'}>
+                                <button className="btn btn-info">My Order</button>
+                            </Link>
                         }
                     </ul>
 

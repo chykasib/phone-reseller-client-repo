@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Context/AuthProvider';
+import { useSeller } from '../../../../Hooks/UseSeller';
 const Product = ({ product, setProduct }) => {
     const { user } = useContext(AuthContext)
+    const [isSeller] = useSeller(user?.email);
     const { picture, name, location, resalePrice, originalPrice, use, postedTime } = product;
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
@@ -18,7 +20,7 @@ const Product = ({ product, setProduct }) => {
                 <p><small className='font-bold'>posted Time</small> :  {postedTime}</p>
                 <p><small className='font-bold'>location </small>: {location}</p>
                 {
-                    user?.email && <div className="form-control">
+                    isSeller && <div className="form-control">
                         <label className="cursor-pointer label">
                             <span className="label-text">{user?.displayName}</span>
                             <input type="checkbox" checked className="checkbox checkbox-warning" />

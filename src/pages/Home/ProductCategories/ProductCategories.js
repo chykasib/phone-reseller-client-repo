@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
@@ -5,11 +6,10 @@ import ProductCategory from './ProductCategory/ProductCategory';
 const ProductCategories = () => {
     const { loading } = useContext(AuthContext)
     const [categoriesProduct, setCategoriesProduct] = useState([])
-    fetch('http://localhost:5000/categories')
-        .then(res => res.json())
-        .then(data => {
-            setCategoriesProduct(data)
-        })
+    axios.get('http://localhost:5000/categories')
+        .then((response) => {
+            setCategoriesProduct(response.data);
+        });
     if (loading) {
         return <Loading></Loading>
     }

@@ -28,8 +28,8 @@ const CheckOutForm = ({ order }) => {
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
     }, [resalePrice]);
-    const handleSubmit = async e => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
         if (!stripe || !elements) {
             return;
         }

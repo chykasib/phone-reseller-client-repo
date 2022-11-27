@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { AuthContext } from '../../Context/AuthProvider';
 import { useAdmin } from '../../Hooks/UseAdmin';
 import Loading from '../../pages/Shared/Loading/Loading';
 

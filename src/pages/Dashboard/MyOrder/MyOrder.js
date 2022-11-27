@@ -22,7 +22,7 @@ const MyOrder = () => {
         return <Loading></Loading>
     }
     return (
-        <div>
+        <div className='hero'>
             <div className="mt-5 mx-10">
                 <table className="table w-full">
                     <thead>
