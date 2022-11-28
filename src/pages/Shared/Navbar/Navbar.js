@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
+import { useAdmin } from '../../../Hooks/UseAdmin';
+import { useSeller } from '../../../Hooks/UseSeller';
 import Loading from '../Loading/Loading';
 const Navbar = () => {
     const { user, logOut, loading } = useContext(AuthContext);
     const navigate = useNavigate()
+    const [isAdmin] = useAdmin(user?.email)
+    const [isSeller] = useSeller(user?.email)
     const [theme, setTheme] = useState('bg-white');
     const toggleTheme = () => {
         theme === 'bg-white' ? setTheme('bg-black') : setTheme('bg-white');
@@ -24,7 +28,8 @@ const Navbar = () => {
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/blogs'}>Blogs</Link></li>
         {
-            user?.email ?
+            isAdmin || isSeller || user?.emailVerified
+                === true ?
                 <>
                     <li><Link to={'/dashboard'}>Dashboard</Link></li>
                     <li>
@@ -34,6 +39,7 @@ const Navbar = () => {
                 :
                 <li><Link to={'/login'}><button className="btn btn-warning">Login</button></Link></li>
         }
+
         <input onClick={toggleTheme} type="checkbox" className="toggle mt-4 ml-4" />
     </React.Fragment>
     if (loading) {

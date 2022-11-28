@@ -23,9 +23,12 @@ const ProductModal = ({ product, setProduct }) => {
             resalePrice,
             picture
         }
-        fetch('http://localhost:5000/orders', {
+        fetch('https://phone-reseller-server.vercel.app/orders', {
             method: 'POST',
-            headers: { 'content-type': 'application/json' },
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             body: JSON.stringify(orders)
         })
             .then(res => res.json())

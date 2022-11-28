@@ -10,7 +10,7 @@ const MyProduct = ({ product }) => {
 
     const handleProduct = id => {
 
-        fetch(`http://localhost:5000/addProduct/${id}`, {
+        fetch(`https://phone-reseller-server.vercel.app/addProduct/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

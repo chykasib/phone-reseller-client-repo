@@ -17,7 +17,7 @@ const CheckOutForm = ({ order }) => {
     const { resalePrice, product, email, _id } = order;
     useTitle('checkout form')
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://phone-reseller-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const CheckOutForm = ({ order }) => {
                 email,
                 orderId: _id
             }
-            fetch(`http://localhost:5000/payment`, {
+            fetch(`https://phone-reseller-server.vercel.app/payment`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

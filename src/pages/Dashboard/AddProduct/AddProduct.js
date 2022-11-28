@@ -36,7 +36,7 @@ const AddProduct = () => {
             email
         }
         console.log(addProduct)
-        fetch('http://localhost:5000/addProduct', {
+        fetch('https://phone-reseller-server.vercel.app/addProduct', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(addProduct)

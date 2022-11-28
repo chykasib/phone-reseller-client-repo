@@ -10,7 +10,7 @@ const MyWishList = () => {
     useTitle('my wishlist')
     const { data: orders = [], isLoading } = useQuery({
         queryKey: ['orders', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+        queryFn: () => fetch(`https://phone-reseller-server.vercel.app/orders?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }

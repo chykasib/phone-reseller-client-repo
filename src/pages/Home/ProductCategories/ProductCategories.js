@@ -6,7 +6,7 @@ import ProductCategory from './ProductCategory/ProductCategory';
 const ProductCategories = () => {
     const { loading } = useContext(AuthContext)
     const [categoriesProduct, setCategoriesProduct] = useState([])
-    axios.get('http://localhost:5000/categories')
+    axios.get('https://phone-reseller-server.vercel.app/categories')
         .then((response) => {
             setCategoriesProduct(response.data);
         });

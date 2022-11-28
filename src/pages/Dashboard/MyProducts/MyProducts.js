@@ -8,7 +8,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const { data: products = [], isLoading } = useQuery({
         queryKey: ['addProduct', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/addProduct?email=${user?.email}`, {
+        queryFn: () => fetch(`https://phone-reseller-server.vercel.app/addProduct?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }

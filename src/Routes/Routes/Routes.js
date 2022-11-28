@@ -35,12 +35,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/advertise/:id', element: <PrivateRoute><AdvertisedItems></AdvertisedItems></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/addProduct/
+                loader: ({ params }) => fetch(`https://phone-reseller-server.vercel.app/addProduct/
                 ${params.id}`)
             },
             {
                 path: '/category/:id', element: <PrivateRoute><Products></Products></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://phone-reseller-server.vercel.app/categories/${params.id}`)
             }
             ,
             {
@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:id', element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`)
+                loader: ({ params }) => fetch(`https://phone-reseller-server.vercel.app/orders/${params.id}`)
             }
         ]
     }
