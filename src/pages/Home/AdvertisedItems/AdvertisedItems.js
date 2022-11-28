@@ -1,16 +1,13 @@
-import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
 import AdvertiseItem from '../AdvertisedItem/AdvertiseItem';
 
 const AdvertisedItems = () => {
     const { loading } = useContext(AuthContext)
-    const [advertiseProducts, setAdvertiseProducts] = useState([])
-    axios.get('http://localhost:5000/advertise')
-        .then((response) => {
-            setAdvertiseProducts(response.data);
-        });
+    const advertiseProducts = useLoaderData();
+    console.log(advertiseProducts)
     if (loading) {
         return <Loading></Loading>
     }
@@ -19,8 +16,7 @@ const AdvertisedItems = () => {
 
             <div className='grid lg:grid-cols-3 sm:grid-cols-1'>
                 {
-                    advertiseProducts.length &&
-                    advertiseProducts.map(advertiseProduct =>
+                    advertiseProducts?.map(advertiseProduct =>
                         <AdvertiseItem key={advertiseProduct._id} advertiseProduct={advertiseProduct}></AdvertiseItem>
                     )
                 }

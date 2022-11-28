@@ -16,7 +16,7 @@ const AdvertiseItem = ({ advertiseProduct }) => {
                 </h2>
                 <div className="items-center grid-flow-col">
                     <p><small className='font-bold'>Price</small>: {price} taka</p>
-
+                    <p><small className='font-bold'>location: {location}</small></p>
                 </div>
                 <p><small className='font-bold'>description: </small> {description}</p>
 

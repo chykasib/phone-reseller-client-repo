@@ -1,33 +1,15 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
 
 const MyProduct = ({ product }) => {
     const { photo, product: name, location, description, price, _id } = product;
     const { loading } = useContext(AuthContext)
-    const advertiseHandler = () => {
-        const advertiseData = {
-            photo,
-            name,
-            location,
-            description,
-            price
-        }
-        fetch('http://localhost:5000/advertise', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(advertiseData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-
-            })
-            .catch(err => console.error(err))
-    }
 
     const handleProduct = id => {
+
         fetch(`http://localhost:5000/addProduct/${id}`, {
             method: 'DELETE',
             headers: {
@@ -64,7 +46,9 @@ const MyProduct = ({ product }) => {
                     <div className="badge badge-outline">{price} taka</div>
                     <button onClick={() => handleProduct(_id)} className="btn btn-sm ml-10">Delete</button>
                     <br />
-                    <div onClick={advertiseHandler} className="btn btn-warning w-full my-5">advertise</div>
+                    <Link to={`/advertise/${_id}`}>
+                        <div className="btn btn-warning w-full my-5">advertise</div>
+                    </Link>
                 </div>
             </div>
         </div>

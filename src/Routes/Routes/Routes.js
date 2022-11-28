@@ -10,6 +10,7 @@ import MyOrder from "../../pages/Dashboard/MyOrder/MyOrder";
 import MyProducts from "../../pages/Dashboard/MyProducts/MyProducts";
 import MyWishList from "../../pages/Dashboard/MyWishList/MyWishList";
 import Payment from "../../pages/Dashboard/Payment/Payment";
+import AdvertisedItems from "../../pages/Home/AdvertisedItems/AdvertisedItems";
 import Home from "../../pages/Home/Home/Home";
 import Products from "../../pages/Home/ProductCategories/Products/Products";
 import ErrorPage from "../../pages/Shared/ErrorPage/ErrorPage";
@@ -31,6 +32,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'login', element: <Login></Login>
+            },
+            {
+                path: '/advertise/:id', element: <PrivateRoute><AdvertisedItems></AdvertisedItems></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/addProduct/
+                ${params.id}`)
             },
             {
                 path: '/category/:id', element: <PrivateRoute><Products></Products></PrivateRoute>,
