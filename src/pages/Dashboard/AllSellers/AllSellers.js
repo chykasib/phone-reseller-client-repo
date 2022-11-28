@@ -66,7 +66,10 @@ const AllSellers = () => {
                                         <td>{user.email}</td>
                                         <td>{
                                             user?.role !== 'seller' &&
-                                            <button onClick={() => handleMakeSeller(user._id)} className='btn btn-xs btn-primary'>Make Seller</button>
+                                            <button onClick={() => handleMakeSeller(user._id)}
+                                                className='btn btn-xs 
+                                                btn-primary'>
+                                                Unverified</button>
                                         }</td>
                                         <td><button onClick={() => handleDeleteSeller(user._id)} className='btn btn-xs bg-red-800'>Delete</button></td>
                                     </tr>

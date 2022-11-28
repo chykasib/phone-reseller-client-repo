@@ -7,7 +7,6 @@ import AdvertiseItem from '../AdvertisedItem/AdvertiseItem';
 const AdvertisedItems = () => {
     const { loading } = useContext(AuthContext)
     const advertiseProducts = useLoaderData();
-    console.log(advertiseProducts)
     if (loading) {
         return <Loading></Loading>
     }

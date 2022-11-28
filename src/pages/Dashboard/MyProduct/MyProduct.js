@@ -18,9 +18,10 @@ const MyProduct = ({ product }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 if (data.acknowledged) {
                     toast.success('your product successfully removed');
+                    window.location.reload(false);
                 }
                 else {
                     return toast.error(data.message)
