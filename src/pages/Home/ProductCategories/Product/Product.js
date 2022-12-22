@@ -14,27 +14,27 @@ const Product = ({ product, setProduct }) => {
                 <h1 className="card-title text-3xl">
                     {name}
                 </h1>
-                <div className="items-center grid-flow-col">
+                <div className="items-center grid-flow-col text-2xl">
                     <p><small className='font-bold'>Resale Price</small>: {resalePrice} taka</p>
                     <p><small className='font-bold'>Original Price: </small> {originalPrice} taka</p>
+                    <p><small className='font-bold'>Years of use: </small> {use}</p>
+                    <p><small className='font-bold'>Posted Time</small> :  {postedTime}</p>
+                    <p><small className='font-bold'>Location </small>: {location}</p>
                 </div>
-                <p><small className='font-bold'>years of use: </small> {use}</p>
-                <p><small className='font-bold'>posted Time</small> :  {postedTime}</p>
-                <p><small className='font-bold'>location </small>: {location}</p>
                 {
                     isSeller && <div className="form-control">
-                        <label className="cursor-pointer label">
+                        <label className="cursor-pointer label text-2xl">
                             <span className="label-text">{user?.displayName}</span>
                             <input type="checkbox" checked className="checkbox checkbox-warning" />
                         </label>
                     </div>
                 }
-                <div className="card-actions justify-center">
+                <div className="card-actions justify-evenly mt-5">
                     <label onClick={() => setProduct(product)} htmlFor="product-modal" className="btn btn-success">
                         Book Now
                     </label>
                     <Link to={'/dashboard/mywishlist'}>
-                        <button className="btn btn-active btn-warning w-full">purchase</button>
+                        <button className="btn btn-active btn-warning w-full">Purchase</button>
                     </Link>
                 </div>
             </div>

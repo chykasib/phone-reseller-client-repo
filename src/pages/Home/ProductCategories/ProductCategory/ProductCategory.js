@@ -13,7 +13,7 @@ const ProductCategory = ({ categoryProduct }) => {
                 <Typical
                     className="my-5 text-5xl font-bold text-white"
                     steps={[`${categoryProduct.categoryName}`, 1000]}
-                    loop={2}
+                    loop={Infinity}
                     wrapper="p"
                 />
                 <div className="card-actions justify-center my-5">

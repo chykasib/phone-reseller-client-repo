@@ -15,7 +15,7 @@ const ProductCategories = () => {
     }
     return (
         <div>
-            <p className='text-3xl pt-8 font-bold'>Product Categories</p>
+            <h1 className="text-5xl text-white font-bold">Product Categories</h1>
             <div className='grid lg:grid-cols-3 sm:grid-cols-1'>
                 {
                     categoriesProduct &&

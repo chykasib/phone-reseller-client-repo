@@ -40,6 +40,10 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                if (user?.uid) {
+                    toast('successfully login')
+                    reset()
+                }
                 navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
