@@ -6,7 +6,6 @@ import { useSeller } from '../../../Hooks/UseSeller';
 import Loading from '../Loading/Loading';
 const Navbar = () => {
     const { user, logOut, loading } = useContext(AuthContext);
-    const navigate = useNavigate()
     const [isAdmin] = useAdmin(user?.email)
     const [isSeller] = useSeller(user?.email)
     const [theme, setTheme] = useState('bg-white');
@@ -21,7 +20,7 @@ const Navbar = () => {
     const logoutHandler = () => {
         logOut()
             .then(result => {
-                navigate('/')
+
             })
             .catch(error => console.error(error))
     }

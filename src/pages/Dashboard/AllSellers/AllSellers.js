@@ -1,10 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../../Context/AuthProvider';
 import { useTitle } from '../../../Hooks/UseTitle';
+import Loading from '../../Shared/Loading/Loading';
 
 const AllSellers = () => {
     useTitle('all sellers')
+    const { loading } = useContext(AuthContext)
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: () => fetch(`https://phone-reseller-server.vercel.app/users`)
@@ -20,7 +24,7 @@ const AllSellers = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    toast.success('Make seller successfully')
+                    toast.success('seller verified successfully')
                     refetch()
                 }
             })
@@ -41,6 +45,9 @@ const AllSellers = () => {
                 }
                 console.log(data)
             })
+    }
+    if (loading) {
+        return <Loading></Loading>
     }
     return (
         <div>
