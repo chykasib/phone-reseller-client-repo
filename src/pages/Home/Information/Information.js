@@ -1,9 +1,9 @@
 import React from 'react';
 import PrimaryButton from '../../../components/PrimaryButton';
-
+import Card from 'react-animated-3d-card'
 const Information = () => {
     return (
-        <div className="hero my-10">
+        <Card className="hero my-10">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSRsLmangF5pgz8J142AGmbeG7SmYHXZ91Ug&usqp=CAU" className="max-h-96 rounded-lg shadow-2xl mr-8" alt='' />
                 <div className=' ml-14'>
@@ -12,7 +12,7 @@ const Information = () => {
                     <PrimaryButton>Create Your Store</PrimaryButton>
                 </div>
             </div>
-        </div>
+        </Card>
     );
 };
 

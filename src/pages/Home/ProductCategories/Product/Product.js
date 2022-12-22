@@ -7,7 +7,7 @@ const Product = ({ product, setProduct }) => {
     const [isSeller] = useSeller(user?.email);
     const { picture, name, location, resalePrice, originalPrice, use, postedTime } = product;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100 shadow-xl" >
             <figure><img src={picture} alt="" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
