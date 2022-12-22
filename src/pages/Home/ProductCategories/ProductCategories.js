@@ -18,6 +18,7 @@ const ProductCategories = () => {
             <p className='text-3xl pt-8 font-bold'>Product Categories</p>
             <div className='grid lg:grid-cols-3 sm:grid-cols-1'>
                 {
+                    categoriesProduct &&
                     categoriesProduct.map(categoryProduct =>
                         <ProductCategory key={categoryProduct._id} categoryProduct={categoryProduct}></ProductCategory>
                     )

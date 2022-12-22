@@ -7,12 +7,13 @@ const Product = ({ product, setProduct }) => {
     const [isSeller] = useSeller(user?.email);
     const { picture, name, location, resalePrice, originalPrice, use, postedTime } = product;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl" >
-            <figure><img src={picture} alt="" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">
+        <div className="card w-96 bg-black shadow-xl" >
+            <figure><img src={picture} alt="" className="w-full h-80" />
+            </figure>
+            <div className="card-body text-white">
+                <h1 className="card-title text-3xl">
                     {name}
-                </h2>
+                </h1>
                 <div className="items-center grid-flow-col">
                     <p><small className='font-bold'>Resale Price</small>: {resalePrice} taka</p>
                     <p><small className='font-bold'>Original Price: </small> {originalPrice} taka</p>

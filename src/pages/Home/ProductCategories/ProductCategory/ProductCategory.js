@@ -1,16 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PrimaryButton from '../../../../components/PrimaryButton';
+import Typical from 'react-typical'
 const ProductCategory = ({ categoryProduct }) => {
     const { image, _id } = categoryProduct;
     return (
-        <div className="card w-96 shadow-xl my-10">
-            <figure className="px-10 pt-10">
-                <img src={image} alt="Shoes" className="rounded-xl" />
+        <div className="card w-96 bg-black shadow-xl my-10">
+            <figure>
+                <img src={image} alt="phone items" className="w-full h-64" />
             </figure>
             <div className="card-body">
+                <Typical
+                    className="my-5 text-5xl font-bold text-white"
+                    steps={[`${categoryProduct.categoryName}`, 1000]}
+                    loop={2}
+                    wrapper="p"
+                />
                 <div className="card-actions justify-center my-5">
                     <Link to={`/category/${_id}`}>
-                        <button className="btn btn-active btn-link text-3xl">{categoryProduct.categoryName}</button>
+                        <PrimaryButton>Show More</PrimaryButton>
                     </Link>
                 </div>
             </div>
