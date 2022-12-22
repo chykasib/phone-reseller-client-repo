@@ -11,7 +11,8 @@ const Navbar = () => {
     const [isSeller] = useSeller(user?.email)
     const [theme, setTheme] = useState('bg-white');
     const toggleTheme = () => {
-        theme === 'bg-white' ? setTheme('bg-black') : setTheme('bg-white');
+        theme === 'bg-white' ?
+            setTheme('bg-black') : setTheme('bg-white');
 
     };
     useEffect(() => {

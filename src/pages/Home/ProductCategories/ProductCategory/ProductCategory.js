@@ -1,20 +1,19 @@
-import React from 'react';
+import React from 'react'
+import { Random } from 'react-animated-text';
 import { Link } from 'react-router-dom';
 import PrimaryButton from '../../../../components/PrimaryButton';
-import Typical from 'react-typical'
 const ProductCategory = ({ categoryProduct }) => {
+
+
     const { image, _id } = categoryProduct;
     return (
         <div className="card w-96 bg-black shadow-xl my-10">
             <figure>
                 <img src={image} alt="phone items" className="w-full h-64" />
             </figure>
-            <div className="card-body">
-                <Typical
-                    className="my-5 text-5xl font-bold text-white"
-                    steps={[`${categoryProduct.categoryName}`, 1000]}
-                    loop={Infinity}
-                    wrapper="p"
+            <div className="card-body text-5xl text-cyan-500 justify-center text-center">
+                <Random
+                    text={categoryProduct.categoryName}
                 />
                 <div className="card-actions justify-center my-5">
                     <Link to={`/category/${_id}`}>
